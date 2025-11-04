@@ -11,6 +11,11 @@ import java.util.Optional;
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     // Buscar cliente por email (método derivado)
     Optional<Cliente> findByEmail(String email);
+    /*if (cliente.isPresent()) {
+            System.out.println("Cliente encontrado: " + cliente.get().getNome());
+     } else {
+            System.out.println("Nenhum cliente com esse e-mail!");
+    }*/
 
     // Verificar se email já existe
     boolean existsByEmail(String email);
