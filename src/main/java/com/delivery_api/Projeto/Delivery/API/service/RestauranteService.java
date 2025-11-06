@@ -37,9 +37,8 @@ public class RestauranteService {
         return restaurenteRepository.findByAtivoTrue();
     }
 
-    /**
-     * Buscar restaurante por ID
-     */
+    //Buscar restaurante por ID
+
     @Transactional(readOnly = true)
     public Optional<Restaurante> buscarPorId(Long id) {
         return restaurenteRepository.findById(id);
@@ -52,6 +51,14 @@ public class RestauranteService {
         restaurante.inativar();
         restaurenteRepository.save(restaurante);
     }
+
+    public void deletar(Long id) {
+        Restaurante restaurante = buscarPorId(id)
+                .orElseThrow(() -> new IllegalArgumentException("Restaurante não encontrado: " + id));
+
+        restaurenteRepository.delete(restaurante);
+    }
+
 
     private void validarDadosRestaurante(Restaurante restaurante) {
         if (restaurante.getNome() == null || restaurante.getNome().trim().isEmpty()) {
