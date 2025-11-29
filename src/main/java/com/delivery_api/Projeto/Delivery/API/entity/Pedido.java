@@ -37,9 +37,11 @@ public class Pedido {
     private Long clienteId;
 
     @ManyToOne
+
+
     @JoinColumn(name = "restaurante_id")
     private Restaurante restaurante;
 
     private String itens;
 
-}
+}   
